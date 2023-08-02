@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VideoClub.Common
+namespace VideoClub.Infrastructure.Services.Implementations
 {
-    public class Class1
+    public class LoggingService
     {
     }
 }

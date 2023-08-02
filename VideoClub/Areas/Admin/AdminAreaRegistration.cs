@@ -1,22 +1,22 @@
 ﻿using System.Web.Mvc;
 
-namespace VideoClub.Areas.Copy
+namespace VideoClub.Areas.Admin
 {
-    public class CopyAreaRegistration : AreaRegistration 
+    public class AdminAreaRegistration : AreaRegistration 
     {
         public override string AreaName 
         {
             get 
             {
-                return "Copy";
+                return "Admin";
             }
         }
 
         public override void RegisterArea(AreaRegistrationContext context) 
         {
             context.MapRoute(
-                "Copy_default",
-                "Copy/{controller}/{action}/{id}",
+                "Admin_default",
+                "Admin/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
         }

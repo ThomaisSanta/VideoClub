@@ -168,6 +168,9 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Copy\CopyAreaRegistration.cs" />
+    <Compile Include="Areas\MovieRent\MovieRentAreaRegistration.cs" />
+    <Compile Include="Areas\Movies\MoviesAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -206,6 +209,9 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\Movies\Views\web.config" />
+    <Content Include="Areas\MovieRent\Views\web.config" />
+    <Content Include="Areas\Copy\Views\web.config" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -254,6 +260,15 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Copy\Controllers\" />
+    <Folder Include="Areas\Copy\Data\" />
+    <Folder Include="Areas\Copy\Views\Shared\" />
+    <Folder Include="Areas\MovieRent\Controllers\" />
+    <Folder Include="Areas\MovieRent\Data\" />
+    <Folder Include="Areas\MovieRent\Views\Shared\" />
+    <Folder Include="Areas\Movies\Controllers\" />
+    <Folder Include="Areas\Movies\Data\" />
+    <Folder Include="Areas\Movies\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -281,6 +296,20 @@
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\VideoClub.Common.csproj">
+      <Project>{bc0157c1-a73a-4e4d-a759-6dad1c2827d7}</Project>
+      <Name>VideoClub.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VideoClub.Core\VideoClub.Core.csproj">
+      <Project>{57d51c0e-0513-44fc-8656-a0a625253f7f}</Project>
+      <Name>VideoClub.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VideoClub.Infrastructure\VideoClub.Infrastructure.csproj">
+      <Project>{22885627-f73b-4e46-b2e5-93cae2481a01}</Project>
+      <Name>VideoClub.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

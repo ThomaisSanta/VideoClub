@@ -11,80 +11,113 @@ namespace VideoClub.Common.Services
 {
     public class MovieRentService : IMovieRentService
     {
-        //private readonly VideoClubContext _context;
-        //private readonly IMovieService _movieService;
-        //private readonly ICopyService _copyService;
-        //private readonly IBookingHistoryService _bookHistoryService;
+        private readonly VideoClubContext _context;
+        private readonly IMovieService _movieService;
+        private readonly ICopyService _copyService;
+        private readonly IBookingHistoryService _bookHistoryService;
 
-        //public MovieRentService(VideoClubContext context,
-        //    IMovieService movieService,
-        //    ICopyService copyService,
-        //    IBookingHistoryService bookHistoryService)
+        public MovieRentService(VideoClubContext context,
+            IMovieService movieService,
+            ICopyService copyService,
+            IBookingHistoryService bookHistoryService)
+        {
+            _copyService = copyService;
+            _context = context;
+            _movieService = movieService;
+            _bookHistoryService = bookHistoryService;
+        }
+        public MovieRent AddMovieRent(int movieID, string userID, string comment)
+        {
+            var copyID = _copyService.GetFirstAvailableCopyIDFromMovieID(movieID);
+            var newBooking = new MovieRent
+            {
+                CopyID = copyID,
+                CustomerID = userID,
+                Comment = comment,
+                BookingDate = DateTime.Now,
+                ReturnDate = DateTime.Now.AddDays(7)
+
+            };
+            _context.MovieRent.Add(newBooking);
+            _context.SaveChanges();
+            //Add the rent of the movie also in Booking History table
+            _bookHistoryService.AddInBookingHistory(copyID, userID, DateTime.Now.AddDays(7));
+            return newBooking;
+        }
+
+        public MovieRent GetActiveBooking(MovieRent movieRentItem)
+        {
+            var movieID = _context.Copy
+                    .Where(c => c.CopyID == movieRentItem.CopyID)
+                    .Select(c => c.MovieID)
+                    .FirstOrDefault();
+            var activeBookingItem = new MovieRent
+            {
+                CopyID = movieRentItem.CopyID,
+                ReturnDate = movieRentItem.ReturnDate,
+                Comment = movieRentItem.Comment,
+            };
+            return activeBookingItem;
+        }
+
+        public string GetCommentWithCopieID(int? copyID)
+        {
+            return _context.MovieRent
+                        .Where(m => m.CopyID == copyID)
+                        .Select(m => m.Comment)
+                        .FirstOrDefault();
+                        
+        }
+
+        //public MovieRent GetBookingFormInUsers(string userName)
+        ////public MovieRentInUsersViewModel GetBookingFormInUsers(string userName)
         //{
-        //    _copyService = copyService;
-        //    _context = context;
-        //    _movieService = movieService;
-        //    _bookHistoryService = bookHistoryService;
-        //}
-        //public MovieRent AddMovieRent(int movieID, string userID, string comment)
-        //{
-        //    var copyID = _copyService.GetFirstAvailableCopyIDFromMovieID(movieID);
-        //    var newBooking = new MovieRent
+        //    //var booking = new MovieRentInUsersViewModel
+        //    var booking = new MovieRent
         //    {
-        //        CopyID = copyID,
-        //        CustomerID = userID,
-        //        Comment = comment,
-        //        BookingDate = DateTime.Now,
-        //        ReturnDate = DateTime.Now.AddDays(7)
-
+        //        UserNameForm = userName,
+        //        Booking = _movieService.GetAvailableMovies().Select(m => new SelectListItem
+        //        {
+        //            Value = m.MovieID.ToString(),
+        //            Text = m.Title
+        //        }).ToList()
         //    };
-        //    _context.MovieRent.Add(newBooking);
-        //    _context.SaveChanges();
-        //    //Add the rent of the movie also in Booking History table
-        //    _bookHistoryService.AddInBookingHistory(copyID, userID, DateTime.Now.AddDays(7));
-        //    return newBooking;
+        //    return booking;
         //}
 
-        //public MovieRentViewModel GetActiveBooking(MovieRent movieRentItem, string username)
+        //public MovieRent GetBookingFormInMovies(string movieTitle)
+        ////public MovieRentInMoviesViewModel GetBookingFormInMovies(string movieTitle)
         //{
-        //    var movieID = _context.Copy
-        //            .Where(c => c.CopyID == movieRentItem.CopyID)
-        //            .Select(c => c.MovieID)
-        //            .FirstOrDefault();
-        //    var activeBookingItem = new MovieRentViewModel
+        //    var booking = new MovieRentInMoviesViewModel
         //    {
-        //        Title = _movieService.GetMovieById(movieID).Title,
-        //        CopyID = movieRentItem.CopyID,
-        //        UserName = username,
-        //        ReturnDate = movieRentItem.ReturnDate,
-        //        Comment = movieRentItem.Comment,
+        //        TitleForm = movieTitle,
         //    };
-        //    return activeBookingItem;
+        //    return booking;
         //}
 
-        //public void DeleteActiveMovieRent(int? copyID)
-        //{
-        //    var movieRentToDelete = _context.MovieRent
-        //        .Where(r => r.CopyID == copyID)
-        //        .FirstOrDefault();
-        //    var copy = _context.Copy
-        //        .Where(c => c.CopyID == copyID)
-        //        .FirstOrDefault();
-        //    copy.CopyIsBooked = false;
-        //    var movieID = _context.Copy
-        //        .Where(c => c.CopyID == copyID)
-        //        .Select(m => m.MovieID)
-        //        .FirstOrDefault();
-        //    var movie = _context.Movies
-        //        .FirstOrDefault(m => m.MovieID == movieID);
-        //    movie.CopiesAvailable += 1;
-        //    _context.MovieRent.Remove(movieRentToDelete);
-        //    _context.SaveChanges();
-        //}
+        public void DeleteActiveMovieRent(int? copyID)
+        {
+            var movieRentToDelete = _context.MovieRent
+                .Where(r => r.CopyID == copyID)
+                .FirstOrDefault();
+            var copy = _context.Copy
+                .Where(c => c.CopyID == copyID)
+                .FirstOrDefault();
+            copy.CopyIsBooked = false;
+            var movieID = _context.Copy
+                .Where(c => c.CopyID == copyID)
+                .Select(m => m.MovieID)
+                .FirstOrDefault();
+            var movie = _context.Movies
+                .FirstOrDefault(m => m.MovieID == movieID);
+            movie.CopiesAvailable += 1;
+            _context.MovieRent.Remove(movieRentToDelete);
+            _context.SaveChanges();
+        }
 
-        //public IEnumerable<MovieRent> GetMovieRents()
-        //{
-        //    return _context.MovieRent.ToList();
-        //}
+        public IEnumerable<MovieRent> GetMovieRents()
+        {
+            return _context.MovieRent.ToList();
+        }
     }
 }

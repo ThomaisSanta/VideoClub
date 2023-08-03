@@ -46,10 +46,53 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=6.4.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.6.4.0\lib\netstandard2.0\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Extensions.DependencyInjection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Extensions.DependencyInjection.8.0.0\lib\netstandard2.0\Autofac.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc, Version=6.1.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Mvc5.6.1.0\lib\net472\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=10.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.10.1.1\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.6.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.6.0.0\lib\net461\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.7.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -163,14 +206,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AdminInitializer.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\DependencyConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\BookingHistory\BookingHistoryAreaRegistration.cs" />
-    <Compile Include="Areas\MovieRent\MovieRentAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\BookingsHistory\BookingsHistoryAreaRegistration.cs" />
+    <Compile Include="Areas\BookingsHistory\Controllers\BookingsHistoryController.cs" />
+    <Compile Include="Areas\BookingsHistory\Data\BookingsHistoryViewModel.cs" />
+    <Compile Include="Areas\MovieRents\Controllers\MovieRentsController.cs" />
+    <Compile Include="Areas\MovieRents\Data\MovieRentInMoviesViewModel.cs" />
+    <Compile Include="Areas\MovieRents\Data\MovieRentInUsersViewModel.cs" />
+    <Compile Include="Areas\MovieRents\Data\MovieRentViewModel.cs" />
+    <Compile Include="Areas\MovieRents\MovieRentsAreaRegistration.cs" />
+    <Compile Include="Areas\Movies\Controllers\MoviesController.cs" />
+    <Compile Include="Areas\Movies\Data\IPaginationService.cs" />
+    <Compile Include="Areas\Movies\Data\PaginationDTO.cs" />
+    <Compile Include="Areas\Movies\Data\PaginationModel.cs" />
+    <Compile Include="Areas\Movies\Data\PaginationService.cs" />
     <Compile Include="Areas\Movies\MoviesAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -178,6 +235,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Mappings\MapperInit.cs" />
+    <Compile Include="Mappings\Profile\BookingHistoryProfile.cs" />
+    <Compile Include="Mappings\Profile\MovieRentProfile.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -201,6 +261,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -210,10 +271,27 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Areas\Movies\Views\web.config" />
-    <Content Include="Areas\MovieRent\Views\web.config" />
-    <Content Include="Areas\BookingHistory\Views\web.config" />
     <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Customers.cshtml" />
+    <Content Include="Areas\BookingsHistory\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\BookingsHistory\Views\Index.cshtml" />
+    <Content Include="Areas\BookingsHistory\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\BookingsHistory\Views\web.config" />
+    <Content Include="Areas\MovieRents\Views\web.config" />
+    <Content Include="Areas\Movies\Views\web.config" />
+    <Content Include="Areas\MovieRents\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\MovieRents\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\MovieRents\Views\Index.cshtml" />
+    <Content Include="Areas\MovieRents\Views\Delete.cshtml" />
+    <Content Include="Areas\MovieRents\Views\NewBookingForm.cshtml" />
+    <Content Include="Areas\MovieRents\Views\NewBookingFormMovie.cshtml" />
+    <Content Include="Areas\Movies\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Movies\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Movies\Views\MoviesInAdmin.cshtml" />
+    <Content Include="Areas\Movies\Views\MoviesInUser.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -262,18 +340,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Admin\Views\Shared\" />
-    <Folder Include="Areas\BookingHistory\Controllers\" />
-    <Folder Include="Areas\BookingHistory\Data\" />
-    <Folder Include="Areas\BookingHistory\Views\Shared\" />
-    <Folder Include="Areas\MovieRent\Controllers\" />
-    <Folder Include="Areas\MovieRent\Data\" />
-    <Folder Include="Areas\MovieRent\Views\Shared\" />
-    <Folder Include="Areas\Movies\Controllers\" />
-    <Folder Include="Areas\Movies\Data\" />
-    <Folder Include="Areas\Movies\Views\Shared\" />
+    <Folder Include="Areas\Admin\Views\Admin\" />
+    <Folder Include="Areas\BookingsHistory\Views\BookingsHistory\" />
+    <Folder Include="Areas\MovieRents\Views\MovieRent\" />
+    <Folder Include="Areas\Movies\Views\Movies\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

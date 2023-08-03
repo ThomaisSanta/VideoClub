@@ -11,28 +11,30 @@ namespace VideoClub.Common.Services
 {
     public class MovieService : IMovieService
     {
-        //private readonly VideoClubContext _context;
+        private readonly VideoClubContext _context;
 
-        //public MovieService(VideoClubContext context)
-        //{
-        //    _context = context;
-        //}
-        //public IEnumerable<Movie> GetMovies()
-        //{
-        //    return _context.Movies.ToList();
-        //}
-        //public Movie GetMovieById(int? id)
-        //{
-        //    return _context.Movies.Find(id);
-        //}
-        //public IEnumerable<Movie> GetAvailableMovies()
-        //{
-        //    return _context.Movies.Where(m => m.CopiesAvailable > 0).ToList();
-        //}
+        public MovieService(VideoClubContext context)
+        {
+            _context = context;
+        }
+        public IEnumerable<Movie> GetMovies()
+        {
+            return _context.Movies.ToList();
+        }
+        public Movie GetMovieById(int? id)
+        {
+            return _context.Movies.Find(id);
+        }
+        public IEnumerable<Movie> GetAvailableMovies()
+        {
+            return _context.Movies.Where(m => m.CopiesAvailable > 0).ToList();
+        }
 
-        //public MovieRentInUsersViewModel GetBookingFormInUsers(string userName)
+        //public MovieRent GetBookingFormInUsers(string userName)
+        ////public MovieRentInUsersViewModel GetBookingFormInUsers(string userName)
         //{
-        //    var booking = new MovieRentInUsersViewModel
+        //    //var booking = new MovieRentInUsersViewModel
+        //    var booking = new MovieRent
         //    {
         //        UserNameForm = userName,
         //        Booking = GetAvailableMovies().Select(m => new SelectListItem
@@ -43,7 +45,9 @@ namespace VideoClub.Common.Services
         //    };
         //    return booking;
         //}
-        //public MovieRentInMoviesViewModel GetBookingFormInMovies(string movieTitle)
+
+        //public MovieRent GetBookingFormInMovies(string movieTitle)
+        ////public MovieRentInMoviesViewModel GetBookingFormInMovies(string movieTitle)
         //{
         //    var booking = new MovieRentInMoviesViewModel
         //    {

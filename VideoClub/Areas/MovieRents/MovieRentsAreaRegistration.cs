@@ -1,22 +1,22 @@
 ﻿using System.Web.Mvc;
 
-namespace VideoClub.Areas.BookingHistory
+namespace VideoClub.Areas.MovieRents
 {
-    public class BookingHistoryAreaRegistration : AreaRegistration 
+    public class MovieRentsAreaRegistration : AreaRegistration 
     {
         public override string AreaName 
         {
             get 
             {
-                return "BookingHistory";
+                return "MovieRents";
             }
         }
 
         public override void RegisterArea(AreaRegistrationContext context) 
         {
             context.MapRoute(
-                "BookingHistory_default",
-                "BookingHistory/{controller}/{action}/{id}",
+                "MovieRents_default",
+                "MovieRents/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
         }

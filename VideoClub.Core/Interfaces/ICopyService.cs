@@ -9,7 +9,8 @@ namespace VideoClub.Core.Interfaces
 {
     public interface ICopyService
     {
-        //IEnumerable<Copy> GetAvailableCopies();
-        //int GetFirstAvailableCopyIDFromMovieID(int movieID);
+        IEnumerable<Copy> GetAvailableCopies();
+        int GetFirstAvailableCopyIDFromMovieID(int movieID);
+        string GetTitleFromCopyID(int copyID);
     }
 }

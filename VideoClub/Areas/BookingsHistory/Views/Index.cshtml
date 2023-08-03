@@ -1,0 +1,44 @@
+﻿@model IEnumerable<VideoClub.Areas.BookingsHistory.Data.BookingsHistoryViewModel>
+
+@{
+    ViewBag.Title = "BookingHistory";
+}
+
+<h2>Booking History</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+
+            @Html.DisplayNameFor(model => model.BookingHistory.CopyID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BookingHistory.DateMovieGotReturned)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comment)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookingHistory.CopyID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookingHistory.DateMovieGotReturned)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comment)
+            </td>
+
+        </tr>
+    }
+</table>

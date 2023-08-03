@@ -9,11 +9,12 @@ namespace VideoClub.Core.Interfaces
 {
     public interface IMovieService
     {
-        //IEnumerable<Movie> GetMovies();
-        //Movie GetMovieById(int? id);
-        //IEnumerable<Movie> GetAvailableMovies();
-        //MovieRentInUsersViewModel GetBookingFormInUsers(string userName);
-        //MovieRentInMoviesViewModel GetBookingFormInMovies(string movieTitle);
-        //IEnumerable<MovieRent> GetMovieRents();
+        IEnumerable<Movie> GetMovies();
+        Movie GetMovieById(int? id);
+        IEnumerable<Movie> GetAvailableMovies();
+        //MovieRent GetBookingFormInUsers(string userName);
+        ////MovieRentInUsersViewModel GetBookingFormInUsers(string userName);
+        //MovieRent GetBookingFormInMovies(string movieTitle);
+        ////MovieRentInMoviesViewModel GetBookingFormInMovies(string movieTitle);
     }
 }

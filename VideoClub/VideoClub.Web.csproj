@@ -214,10 +214,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminControllerOLD.cs" />
     <Compile Include="Areas\BookingsHistory\BookingsHistoryAreaRegistration.cs" />
     <Compile Include="Areas\BookingsHistory\Controllers\BookingsHistoryController.cs" />
     <Compile Include="Areas\BookingsHistory\Data\BookingsHistoryViewModel.cs" />
+    <Compile Include="Areas\Customer\Controllers\CustomerController.cs" />
+    <Compile Include="Areas\Customer\CustomerAreaRegistration.cs" />
     <Compile Include="Areas\MovieRents\Controllers\MovieRentsController.cs" />
     <Compile Include="Areas\MovieRents\Data\MovieRentInMoviesViewModel.cs" />
     <Compile Include="Areas\MovieRents\Data\MovieRentInUsersViewModel.cs" />
@@ -230,8 +232,10 @@
     <Compile Include="Areas\Movies\Data\PaginationService.cs" />
     <Compile Include="Areas\Movies\MoviesAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -272,10 +276,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Admin\Views\web.config" />
-    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Admin\Views\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Customers.cshtml" />
     <Content Include="Areas\BookingsHistory\Views\_ViewStart.cshtml" />
     <Content Include="Areas\BookingsHistory\Views\Index.cshtml" />
     <Content Include="Areas\BookingsHistory\Views\Shared\_Layout.cshtml" />
@@ -292,6 +293,12 @@
     <Content Include="Areas\Movies\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Movies\Views\MoviesInAdmin.cshtml" />
     <Content Include="Areas\Movies\Views\MoviesInUser.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Customers.cshtml" />
+    <Content Include="Areas\Customer\Views\web.config" />
+    <Content Include="Areas\Customer\Views\Customer\Index.cshtml" />
+    <Content Include="Areas\Movies\Views\Movies\MoviesInAdmin.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -337,14 +344,16 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Admin\Views\Admin\" />
     <Folder Include="Areas\BookingsHistory\Views\BookingsHistory\" />
+    <Folder Include="Areas\Customer\Data\" />
+    <Folder Include="Areas\Customer\Views\Shared\" />
     <Folder Include="Areas\MovieRents\Views\MovieRent\" />
-    <Folder Include="Areas\Movies\Views\Movies\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

@@ -22,14 +22,6 @@ namespace VideoClub.App_Start
             _roleManager = roleManager;
         }
 
-        //public AdminInitializer(ApplicationUserManager userManager, ApplicationRoleManager roleManager)
-        //{
-        //    _userStore = new UserStore<ApplicationUser>(new VideoClubProjectContext());
-        //    _userManager = new UserManager<ApplicationUser>(_userStore);
-        //    UserManager = userManager;
-        //    RoleManager = roleManager;
-        //}
-
         public void AdminUser()
         {
             // create admin user and assign them to the admin role

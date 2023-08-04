@@ -12,9 +12,9 @@ namespace VideoClub.Infrastructure.Data
 {
     public class VideoClubContext : IdentityDbContext<ApplicationUser>
     {
-        //Enable-Migrations -ContextTypeName VideoClub.Data.VideoClubContext -MigrationsDirectory Data\Migrations
-        //Add-Migration -ConfigurationTypeName VideoClub.Data.Migrations.Configuration Initial
-        //Update-Database -ConfigurationTypeName VideoClub.Data.Migrations.Configuration -Verbose
+        //Enable-Migrations -ContextTypeName VideoClub.Infrastructure.Data.VideoClubContext -MigrationsDirectory Data\Migrations
+        //Add-Migration -ConfigurationTypeName VideoClub.Infrastructure.Data.Migrations.Configuration Initial
+        //Update-Database -ConfigurationTypeName VideoClub.Infrastructure.Data.Migrations.Configuration -Verbose
         public VideoClubContext() : base("VideoClubContext") { }
 
         public DbSet<Movie> Movies { get; set; }

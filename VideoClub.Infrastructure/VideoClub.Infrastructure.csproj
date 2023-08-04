@@ -57,6 +57,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Migrations\202308040758479_InitialCreate.cs" />
+    <Compile Include="Data\Migrations\202308040758479_InitialCreate.designer.cs">
+      <DependentUpon>202308040758479_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Migrations\202308040905019_Initial.cs" />
+    <Compile Include="Data\Migrations\202308040905019_Initial.designer.cs">
+      <DependentUpon>202308040905019_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Migrations\Configuration.cs" />
     <Compile Include="Data\VideoClubContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Implementations\LoggingService.cs" />
@@ -68,12 +77,18 @@
       <Name>VideoClub.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data\Migrations\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Data\Migrations\202308040758479_InitialCreate.resx">
+      <DependentUpon>202308040758479_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data\Migrations\202308040905019_Initial.resx">
+      <DependentUpon>202308040905019_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

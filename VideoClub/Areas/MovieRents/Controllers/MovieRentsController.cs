@@ -95,7 +95,8 @@ namespace VideoClub.Areas.MovieRents.Controllers
             var newBooking = _movieRentService.AddMovieRent(model.MovieFormID,
                 user.Id,
                 model.CommentForm);
-            return RedirectToAction("MoviesInAdmin", "Movie");
+            //return RedirectToAction("MoviesInAdmin", "Movie");
+            return RedirectToAction("Index", "Movie");
         }
 
         //Get

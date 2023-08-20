@@ -8,7 +8,8 @@
 <h2>Movies</h2>
 
 
-@using (Html.BeginForm("MoviesInAdmin", "Movie", FormMethod.Get))
+@*@using (Html.BeginForm("MoviesInAdmin", "Movie", FormMethod.Get))*@
+@using (Html.BeginForm("Index", "Movie", FormMethod.Get))
 {
     <p>
         Search by title: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
@@ -19,20 +20,35 @@
 <table class="table">
     <tr>
         <th>
-            @Html.ActionLink("Title", "MoviesInAdmin", new { CurrentFilter = ViewBag.CurrentFilter })
+            @Html.ActionLink("Title", "Index", new { CurrentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.ActionLink("Description", "MoviesInAdmin", new { CurrentFilter = ViewBag.CurrentFilter })
+            @Html.ActionLink("Description", "Index", new { CurrentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.ActionLink("Genre", "MoviesInAdmin", new { SortOrder = ViewBag.GenreSortParm, CurrentFilter = ViewBag.CurrentFilter })
+            @Html.ActionLink("Genre", "Index", new { SortOrder = ViewBag.GenreSortParm, CurrentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.ActionLink("Copies", "MoviesInAdmin", new { CurrentFilter = ViewBag.CurrentFilter })
+            @Html.ActionLink("Copies", "Index", new { CurrentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
             <p></p>
         </th>
+        @*<th>
+                @Html.ActionLink("Title", "MoviesInAdmin", new { CurrentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Description", "MoviesInAdmin", new { CurrentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Genre", "MoviesInAdmin", new { SortOrder = ViewBag.GenreSortParm, CurrentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Copies", "MoviesInAdmin", new { CurrentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                <p></p>
+            </th>*@
     </tr>
 
     @foreach (var item in Model)
@@ -64,5 +80,3 @@ Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.Page
 
 @*@Html.PagedListPager(Model, page => Url.Action("MoviesInAdmin", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))*@
 @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
-
-

@@ -1,35 +1,42 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity.Owin;
-using System.Net;
 using VideoClub.Core.Entities;
 using VideoClub.Core.Interfaces;
 using VideoClub.Infrastructure.Data;
 
-namespace VideoClub.Areas.Admin.Controllers
+namespace VideoClub.Areas.Customers.Controllers
 {
-    public class AdminController : Controller
+    public class CustomersController : Controller
     {
+        //// GET: Customers/Customers
+        //public ActionResult Index()
+        //{
+        //    return View();
+        //}
+
+
+
         private readonly IMovieService _movieService;
         private readonly UserStore<ApplicationUser> _userStore;
         private UserManager<ApplicationUser> _userManager;
         private ApplicationRoleManager _roleManager;
 
-        public AdminController()
+        public CustomersController()
         {
         }
 
-        public AdminController(IMovieService movieService)
+        public CustomersController(IMovieService movieService)
         {
             _movieService = movieService;
         }
 
-        public AdminController(IMovieService movieService,
+        public CustomersController(IMovieService movieService,
             ICopyService copyService,
             ApplicationUserManager userManager,
             ApplicationRoleManager roleManager)
@@ -67,29 +74,37 @@ namespace VideoClub.Areas.Admin.Controllers
             }
         }
 
-        // GET: Admin
+        // GET: User
+        //public ActionResult Index()
+        //{
+        //    return View();
+        //}
+
         public ActionResult Index()
         {
-            return View();
+            var role = "User";
+            var userRole = RoleManager.FindByName(role);
+            if (userRole != null)
+            {
+                var showUser = UserManager
+                    .Users
+                    .Where(u => u.Roles
+                    .Any(r => r.RoleId == userRole.Id))
+                    .ToList();
+                return View(showUser);
+            }
+            else
+            {
+                return View(new List<ApplicationUser>());
+            }
         }
 
-        //public ActionResult Customers()
-        //{
-        //    var role = "User";
-        //    var userRole = RoleManager.FindByName(role);
-        //    if (userRole != null)
-        //    {
-        //        var showUser = UserManager
-        //            .Users
-        //            .Where(u => u.Roles
-        //            .Any(r => r.RoleId == userRole.Id))
-        //            .ToList();
-        //        return View(showUser);
-        //    }
-        //    else
-        //    {
-        //        return View(new List<ApplicationUser>());
-        //    }
-        //}
+
+
+
     }
+
+
+
+
 }

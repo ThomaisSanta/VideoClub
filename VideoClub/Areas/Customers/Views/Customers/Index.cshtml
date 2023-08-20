@@ -1,0 +1,30 @@
+﻿@model  List<VideoClub.Core.Entities.ApplicationUser>
+@{
+    ViewBag.Title = "Customers";
+}
+
+<h2>Customers</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>
+                @user.UserName
+            </td>
+            <td>
+                @Html.ActionLink("Booking History", "BookingHistory", new { UserName = user.UserName }, new { style = "margin-right: 50px;" })
+                @Html.ActionLink("Book a movie", "NewBookingForm", new { UserName = user.UserName })
+            </td>
+        </tr>
+    }
+</table>
+
+@Html.ActionLink("Back to admin page", "Index", "Admin")

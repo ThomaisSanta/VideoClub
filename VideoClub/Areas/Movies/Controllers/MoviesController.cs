@@ -64,7 +64,8 @@ namespace VideoClub.Areas.Movies.Controllers
         }
 
         // GET : Movie
-        public ActionResult MoviesInAdmin(PaginationDTO paginationDTO)
+        //public ActionResult MoviesInAdmin(PaginationDTO paginationDTO)
+        public ActionResult Index(PaginationDTO paginationDTO)
         {
             ViewBag.CurrentSort = paginationDTO.SortOrder;
             ViewBag.GenreSortParm = paginationDTO.SortOrder == "Genre" ? "genre_desc" : "Genre";

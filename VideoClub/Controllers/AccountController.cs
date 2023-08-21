@@ -125,7 +125,7 @@ namespace VideoClub.Controllers
                     case SignInStatus.Success:
                         // User is successfully logged in
                         //return RedirectToAction("Index", "Movie", new { role = "User", area = "" });
-                        return RedirectToAction("Index", "Customer", new { area = "Customer" });
+                        return RedirectToAction("Index", "User", new { area = "" });
                     //return RedirectToLocal(returnUrl);
                     case SignInStatus.LockedOut:
                         return View("Lockout");
@@ -220,7 +220,7 @@ namespace VideoClub.Controllers
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                    return RedirectToAction("Index", "Movie", new { area = "" });
+                    return RedirectToAction("Index", "User", new { area = "" });
 
 
 

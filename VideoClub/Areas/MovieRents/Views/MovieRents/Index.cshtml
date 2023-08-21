@@ -54,7 +54,8 @@
     }
 </table>
 
-@Html.ActionLink("Back to admin page", "Index", "Admin")
+@*@Html.ActionLink("Back to admin page", "Index", "Admin", new { area = "" })*@
+<a href="@Url.Action("Index", "Admin", new { area = ""})">Back to admin page</a>
 
 
 

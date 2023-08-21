@@ -22,7 +22,8 @@
             </td>
             <td>
                 @Html.ActionLink("Booking History", "Index", "BookingHistory", new { UserName = user.UserName }, new { style = "margin-right: 100px;" })
-                <p><a href="@Url.Action("NewBookingForm", "MovieRent", new { UserName = user.UserName })">New Booking &raquo;</a></p>
+                @*<p><a href="@Url.Action("NewBookingForm", "MovieRent", new { UserName = user.UserName })">New Booking &raquo;</a></p>*@
+                <p><a href="@Url.Action("NewBookingForm", "Customers", new { UserName = user.UserName })">New Booking &raquo;</a></p>
             </td>
         </tr>
     }

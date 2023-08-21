@@ -1,12 +1,14 @@
 ﻿@model PagedList.IPagedList<VideoClub.Core.Entities.Movie>
 @using PagedList.Mvc;
 
+@{
     ViewBag.Title = "Movies";
 }
 
 <h2>Movies</h2>
 
-@*@using (Html.BeginForm("IndexUser", "Movie", FormMethod.Get))*@
+
+@*@using (Html.BeginForm("MoviesInAdmin", "Movie", FormMethod.Get))*@
 @using (Html.BeginForm("Index", "User", FormMethod.Get))
 {
     <p>
@@ -18,17 +20,35 @@
 <table class="table">
     <tr>
         <th>
-            @Html.ActionLink("Title", "IndexUser", new { CurrentFilter = ViewBag.CurrentFilter })
+            @Html.ActionLink("Title", "Index", new { CurrentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.ActionLink("Description", "IndexUser", new { CurrentFilter = ViewBag.CurrentFilter })
+            @Html.ActionLink("Description", "Index", new { CurrentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.ActionLink("Genre", "IndexUser", new { SortOrder = ViewBag.GenreSortParm, CurrentFilter = ViewBag.CurrentFilter })
+            @Html.ActionLink("Genre", "Index", new { SortOrder = ViewBag.GenreSortParm, CurrentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.ActionLink("Available copies", "IndexUser", new { currentFilter = ViewBag.CurrentFilter })
+            @Html.ActionLink("Copies", "Index", new { CurrentFilter = ViewBag.CurrentFilter })
         </th>
+        <th>
+            <p></p>
+        </th>
+        @*<th>
+                @Html.ActionLink("Title", "MoviesInAdmin", new { CurrentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Description", "MoviesInAdmin", new { CurrentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Genre", "MoviesInAdmin", new { SortOrder = ViewBag.GenreSortParm, CurrentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Copies", "MoviesInAdmin", new { CurrentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                <p></p>
+            </th>*@
     </tr>
 
     @foreach (var item in Model)
@@ -46,11 +66,18 @@
             <td>
                 @Html.DisplayFor(modelItem => item.CopiesAvailable)
             </td>
+            <td>
+                @*<p><a href="@Url.Action("NewBookingFormMovie", "MovieRent", new { SortOrder = ViewBag.GenreSortParm, CurrentFilter = ViewBag.CurrentFilter, MovieFormID = item.MovieID })" class="btn btn-primary btn-md">New Booking &raquo;</a></p>*@
+                @*<p><a href="@Url.Action("NewBookingFormMovie", "Movies", new { SortOrder = ViewBag.GenreSortParm, CurrentFilter = ViewBag.CurrentFilter, MovieFormID = item.MovieID })" class="btn btn-primary btn-md">New Booking &raquo;</a></p>*@
+            </td>
         </tr>
     }
 </table>
+@*@Html.ActionLink("Back to admin page", "Index", "Admin")*@
 
 <br />
+
 Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
-@Html.PagedListPager(Model, page => Url.Action("IndexUser", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+@*@Html.PagedListPager(Model, page => Url.Action("MoviesInAdmin", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))*@
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

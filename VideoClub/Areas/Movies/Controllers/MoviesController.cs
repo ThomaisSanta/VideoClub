@@ -11,11 +11,14 @@ using VideoClub.Core.Entities;
 using VideoClub.Core.Interfaces;
 using VideoClub.Infrastructure.Data;
 using PagedList;
+using VideoClub.Areas.MovieRents.Data;
+using VideoClub.Common.Services;
 
 namespace VideoClub.Areas.Movies.Controllers
 {
     public class MoviesController : Controller
     {
+        private readonly IMovieRentService _movieRentService;
         private readonly IMovieService _movieService;
         private readonly ICopyService _copyService;
         private readonly IPaginationService _paginationService;
@@ -23,19 +26,23 @@ namespace VideoClub.Areas.Movies.Controllers
         private UserManager<ApplicationUser> _userManager;
 
         public MoviesController(IMovieService movieService,
+            IMovieRentService movieRentService,
             IPaginationService paginationService)
         {
             _movieService = movieService;
+            _movieRentService = movieRentService;
             _paginationService = paginationService;
         }
 
         public MoviesController(IMovieService movieService,
+            IMovieRentService movieRentService,
             ApplicationUserManager userManager)
         {
             _userStore = new UserStore<ApplicationUser>(new VideoClubContext());
             _userManager = new UserManager<ApplicationUser>(_userStore);
             UserManager = userManager;
             _movieService = movieService;
+            _movieRentService = movieRentService;
         }
 
         public ApplicationUserManager UserManager
@@ -73,6 +80,28 @@ namespace VideoClub.Areas.Movies.Controllers
             var movies = _movieService.GetAvailableMovies();
             var paginationModel = _paginationService.GetMoviesPaginated(movies, paginationDTO);
             return View(paginationModel.Items.ToPagedList(paginationModel.PageNumber, paginationModel.PageSize));
+        }
+
+        //GET 
+        [HttpGet]
+        public ActionResult NewBookingFormMovie(string movieTitle)
+        {
+            var booking = new MovieRentInMoviesViewModel
+            {
+                TitleForm = movieTitle,
+            };
+            return View(booking);
+        }
+
+        //Post
+        [HttpPost]
+        public ActionResult NewBookingFormMovie(MovieRentInMoviesViewModel model)
+        {
+            var user = UserManager.FindByName(model.UserNameForm);
+            var newBooking = _movieRentService.AddMovieRent(model.MovieFormID,
+                user.Id,
+                model.CommentForm);
+            return RedirectToAction("Index", "Movies");
         }
 
         protected override void Dispose(bool disposing)

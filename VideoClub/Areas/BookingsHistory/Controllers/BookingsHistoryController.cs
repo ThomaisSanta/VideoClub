@@ -10,7 +10,7 @@ using VideoClub.Core.Entities;
 using VideoClub.Core.Interfaces;
 using VideoClub.Infrastructure.Data;
 using AutoMapper;
-using VideoClub.Areas.BookingsHistory.Data;
+using VideoClub.Areas.Customers.Data;
 using VideoClub.Common.Services;
 using VideoClub.Areas.MovieRents.Data;
 

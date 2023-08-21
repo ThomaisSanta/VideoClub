@@ -217,9 +217,10 @@
     <Compile Include="Areas\Admin\Controllers\AdminControllerOLD.cs" />
     <Compile Include="Areas\BookingsHistory\BookingsHistoryAreaRegistration.cs" />
     <Compile Include="Areas\BookingsHistory\Controllers\BookingsHistoryController.cs" />
-    <Compile Include="Areas\BookingsHistory\Data\BookingsHistoryViewModel.cs" />
+    <Compile Include="Areas\BookingsHistory\Data\BookingsHistoryViewModelOLD.cs" />
     <Compile Include="Areas\Customers\Controllers\CustomersController.cs" />
     <Compile Include="Areas\Customers\CustomersAreaRegistration.cs" />
+    <Compile Include="Areas\Customers\Data\BookingsHistoryViewModel.cs" />
     <Compile Include="Areas\MovieRents\Controllers\MovieRentsController.cs" />
     <Compile Include="Areas\MovieRents\Data\MovieRentInMoviesViewModel.cs" />
     <Compile Include="Areas\MovieRents\Data\MovieRentInUsersViewModel.cs" />
@@ -278,21 +279,21 @@
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\BookingsHistory\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\BookingsHistory\Views\Index.cshtml" />
+    <Content Include="Areas\BookingsHistory\Views\IndexOLD.cshtml" />
     <Content Include="Areas\BookingsHistory\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\BookingsHistory\Views\web.config" />
     <Content Include="Areas\MovieRents\Views\web.config" />
     <Content Include="Areas\Movies\Views\web.config" />
     <Content Include="Areas\MovieRents\Views\_ViewStart.cshtml" />
     <Content Include="Areas\MovieRents\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\MovieRents\Views\Index.cshtml" />
-    <Content Include="Areas\MovieRents\Views\Delete.cshtml" />
-    <Content Include="Areas\MovieRents\Views\NewBookingForm.cshtml" />
-    <Content Include="Areas\MovieRents\Views\NewBookingFormMovie.cshtml" />
+    <Content Include="Areas\MovieRents\Views\IndexOLD.cshtml" />
+    <Content Include="Areas\MovieRents\Views\DeleteOLD.cshtml" />
+    <Content Include="Areas\MovieRents\Views\NewBookingFormOLD.cshtml" />
+    <Content Include="Areas\MovieRents\Views\NewBookingFormMovieOLD.cshtml" />
     <Content Include="Areas\Movies\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Movies\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Movies\Views\MoviesInAdmin.cshtml" />
-    <Content Include="Areas\Movies\Views\MoviesInUser.cshtml" />
+    <Content Include="Areas\Movies\Views\MoviesInAdminOLD.cshtml" />
+    <Content Include="Areas\Movies\Views\MoviesInUserOLD.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Customers.cshtml" />
@@ -302,6 +303,10 @@
     <Content Include="Areas\Customers\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Customers\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Customers\Views\Customers\Index.cshtml" />
+    <Content Include="Areas\Movies\Views\Movies\NewBookingFormMovie.cshtml" />
+    <Content Include="Areas\Customers\Views\Customers\NewBookingForm.cshtml" />
+    <Content Include="Areas\Customers\Views\Customers\BookingHistory.cshtml" />
+    <Content Include="Areas\MovieRents\Views\MovieRents\Delete.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -348,13 +353,13 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\User\IndexOLD.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\BookingsHistory\Views\BookingsHistory\" />
-    <Folder Include="Areas\Customers\Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

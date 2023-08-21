@@ -12,7 +12,7 @@ namespace VideoClub.Mappings.Profile
     {
         public MovieRentProfile()
         {
-            CreateMap<MovieRentViewModel, MovieRent>(MemberList.None);
+            CreateMap<MovieRentViewModel, MovieRent>(MemberList.None).ReverseMap();
         }
     }
 }

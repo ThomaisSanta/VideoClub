@@ -9,7 +9,7 @@
 
 
 @*@using (Html.BeginForm("MoviesInAdmin", "Movie", FormMethod.Get))*@
-@using (Html.BeginForm("Index", "Movie", FormMethod.Get))
+@using (Html.BeginForm("Index", "Movies", FormMethod.Get))
 {
     <p>
         Search by title: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
@@ -67,12 +67,14 @@
                 @Html.DisplayFor(modelItem => item.CopiesAvailable)
             </td>
             <td>
-                <p><a href="@Url.Action("NewBookingFormMovie", "MovieRent", new { SortOrder = ViewBag.GenreSortParm, CurrentFilter = ViewBag.CurrentFilter, MovieFormID = item.MovieID })" class="btn btn-primary btn-md">New Booking &raquo;</a></p>
+                @*<p><a href="@Url.Action("NewBookingFormMovie", "MovieRent", new { SortOrder = ViewBag.GenreSortParm, CurrentFilter = ViewBag.CurrentFilter, MovieFormID = item.MovieID })" class="btn btn-primary btn-md">New Booking &raquo;</a></p>*@
+                <p><a href="@Url.Action("NewBookingFormMovie", "Movies", new { SortOrder = ViewBag.GenreSortParm, CurrentFilter = ViewBag.CurrentFilter, MovieFormID = item.MovieID })" class="btn btn-primary btn-md">New Booking &raquo;</a></p>
             </td>
         </tr>
     }
 </table>
-@Html.ActionLink("Back to admin page", "Index", "Admin")
+@*@Html.ActionLink("Back to admin page", "Index", "Admin", new { area = "" })*@
+<a href="@Url.Action("Index", "Admin", new { area = ""})">Back to admin page</a>
 
 <br />
 

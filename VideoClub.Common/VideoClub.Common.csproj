@@ -63,7 +63,6 @@
     <Compile Include="Services\CopyService.cs" />
     <Compile Include="Services\MovieRentService.cs" />
     <Compile Include="Services\MovieService.cs" />
-    <Compile Include="Services\PaginationServiceOLD.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\VideoClub.Core\VideoClub.Core.csproj">

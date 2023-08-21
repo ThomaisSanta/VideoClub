@@ -72,24 +72,5 @@ namespace VideoClub.Areas.Admin.Controllers
         {
             return View();
         }
-
-        //public ActionResult Customers()
-        //{
-        //    var role = "User";
-        //    var userRole = RoleManager.FindByName(role);
-        //    if (userRole != null)
-        //    {
-        //        var showUser = UserManager
-        //            .Users
-        //            .Where(u => u.Roles
-        //            .Any(r => r.RoleId == userRole.Id))
-        //            .ToList();
-        //        return View(showUser);
-        //    }
-        //    else
-        //    {
-        //        return View(new List<ApplicationUser>());
-        //    }
-        //}
     }
 }

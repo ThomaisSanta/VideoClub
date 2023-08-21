@@ -11,6 +11,5 @@ namespace VideoClub.Core.Interfaces
     {
         void AddInBookingHistory(int copyID, string userID, DateTime returnDate);
         IEnumerable<BookingHistory> GetBookingHistoryForUser(string userID);
-        //IEnumerable<BookingHistoryViewModel> GetBookingHistoryForUser(string userID);
     }
 }

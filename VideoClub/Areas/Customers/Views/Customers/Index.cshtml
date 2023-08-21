@@ -1,4 +1,5 @@
 ﻿@model  List<VideoClub.Core.Entities.ApplicationUser>
+@*@model List<string>*@
 @{
     ViewBag.Title = "Customers";
 }
@@ -17,16 +18,15 @@
     {
         <tr>
             <td>
-                @user.UserName
+                @user.FirstName  @user.LastName
             </td>
             <td>
                 @Html.ActionLink("Booking History", "BookingHistory", new { UserName = user.UserName }, new { style = "margin-right: 50px;" })
-                @Html.ActionLink("Book a movie", "NewBookingForm", new { UserName = user.UserName })
+                @Html.ActionLink("Book a movie", "CustomersFormView", new { UserName = user.UserName })
             </td>
         </tr>
     }
 </table>
 
-@*@Html.ActionLink("Back to admin page", "Index", "Admin", new { area = "" })*@
 <a href="@Url.Action("Index", "Admin", new { area = ""})">Back to admin page</a>
 

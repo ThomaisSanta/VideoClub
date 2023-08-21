@@ -12,9 +12,5 @@ namespace VideoClub.Core.Interfaces
         IEnumerable<Movie> GetMovies();
         Movie GetMovieById(int? id);
         IEnumerable<Movie> GetAvailableMovies();
-        //MovieRent GetBookingFormInUsers(string userName);
-        ////MovieRentInUsersViewModel GetBookingFormInUsers(string userName);
-        //MovieRent GetBookingFormInMovies(string movieTitle);
-        ////MovieRentInMoviesViewModel GetBookingFormInMovies(string movieTitle);
     }
 }

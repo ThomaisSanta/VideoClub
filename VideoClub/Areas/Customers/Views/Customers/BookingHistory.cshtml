@@ -1,5 +1,4 @@
-﻿@*@model IEnumerable<VideoClub.Areas.BookingsHistory.Data.BookingsHistoryViewModel>*@
-@model IEnumerable<VideoClub.Areas.Customers.Data.BookingsHistoryViewModel>
+﻿@model IEnumerable<VideoClub.Areas.Customers.Data.BookingsHistoryViewModel>
 
 @{
     ViewBag.Title = "BookingHistory";
@@ -14,11 +13,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.CopyID)
-            @*@Html.DisplayNameFor(model => model.BookingHistory.CopyID)*@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ReturnedDate)
-            @*@Html.DisplayNameFor(model => model.BookingHistory.DateMovieGotReturned)*@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Comment)
@@ -33,11 +30,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CopyID)
-                @*@Html.DisplayFor(modelItem => item.BookingHistory.CopyID)*@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ReturnedDate)
-                @*@Html.DisplayFor(modelItem => item.BookingHistory.DateMovieGotReturned)*@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Comment)

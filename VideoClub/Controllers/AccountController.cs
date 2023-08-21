@@ -22,7 +22,6 @@ namespace VideoClub.Controllers
     {
 
         private ApplicationSignInManager _signInManager;
-        //private readonly RoleManager<IdentityRole> _roleManager;
         private ApplicationRoleManager _roleManager;
         private readonly UserStore<ApplicationUser> _userStore;
         private UserManager<ApplicationUser> _userManager;
@@ -35,7 +34,6 @@ namespace VideoClub.Controllers
         {
             _userStore = new UserStore<ApplicationUser>(new VideoClubContext());
             _userManager = new UserManager<ApplicationUser>(_userStore);
-            //_roleManager = roleManager;
             UserManager = userManager;
             SignInManager = signInManager;
             RoleManager = roleManager;
@@ -124,9 +122,7 @@ namespace VideoClub.Controllers
                 {
                     case SignInStatus.Success:
                         // User is successfully logged in
-                        //return RedirectToAction("Index", "Movie", new { role = "User", area = "" });
                         return RedirectToAction("Index", "User", new { area = "" });
-                    //return RedirectToLocal(returnUrl);
                     case SignInStatus.LockedOut:
                         return View("Lockout");
                     case SignInStatus.RequiresVerification:
@@ -209,7 +205,7 @@ namespace VideoClub.Controllers
                     var userRole = new IdentityRole("User");
                     RoleManager.Create(userRole);
                 }
-                var user = new ApplicationUser { UserName = model.Name+model.LastName, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Name+model.LastName, Email = model.Email , FirstName = model.Name, LastName = model.LastName};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

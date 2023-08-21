@@ -32,11 +32,5 @@ namespace VideoClub.Controllers
             var paginationModel = _paginationService.GetMoviesPaginated(movies, paginationDTO);
             return View(paginationModel.Items.ToPagedList(paginationModel.PageNumber, paginationModel.PageSize));
         }
-
-        //// GET: User
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
     }
 }

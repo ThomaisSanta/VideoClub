@@ -11,9 +11,7 @@ namespace VideoClub.Core.Entities
         public int BookingHistoryID { get; set; }
         public string CustomerID { get; set; }
         public int CopyID { get; set; }
-        //public int MovieID { get; set; }
         public DateTime DateMovieGotReturned { get; set; }
-        //public virtual Movie Movie { get; set; }
         public virtual Copy Copy { get; set; }
     }
 }

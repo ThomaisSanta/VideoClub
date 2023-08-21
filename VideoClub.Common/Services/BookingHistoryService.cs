@@ -12,12 +12,9 @@ namespace VideoClub.Common.Services
     public class BookingHistoryService : IBookingHistoryService
     {
         private readonly VideoClubContext _context;
-        private readonly IMovieService _movieService;
-        public BookingHistoryService(VideoClubContext context,
-            IMovieService movieService)
+        public BookingHistoryService(VideoClubContext context)
         {
             _context = context;
-            _movieService = movieService;
         }
 
         public void AddInBookingHistory(int copyID, string userID, DateTime returnDate)
@@ -33,13 +30,11 @@ namespace VideoClub.Common.Services
         }
 
         public IEnumerable<BookingHistory> GetBookingHistoryForUser(string userID)
-        //public IEnumerable<BookingHistoryViewModel> GetBookingHistoryForUser(string userID)
         {
             var userHistoryList = _context.BookingsHistory
                 .Where(h => h.CustomerID == userID)
                 .ToList();
             var bookingHistoryList = new List<BookingHistory>();
-            //var bookingHistoryList = new List<BookingHistoryViewModel>();
             foreach (var userHistoryItem in userHistoryList)
             {
                 var movieID = _context.Copy
@@ -52,20 +47,7 @@ namespace VideoClub.Common.Services
                     CopyID = userHistoryItem.CopyID,
                     DateMovieGotReturned = userHistoryItem.DateMovieGotReturned
                 };
-
-                //var bookingHistoryViewModelItem = new BookingHistory
-                //var bookingHistoryViewModelItem = new BookingHistoryViewModel
-                //{
-                //    Title = _movieService.GetMovieById(movieID).Title,
-                //    BookingHistory = bookingHistoryItem,
-                //    Comment = _context.MovieRent
-                //        .Where(m => m.CopyID == bookingHistoryItem.CopyID)
-                //        .Select(m => m.Comment)
-                //        .FirstOrDefault()
-                //};
-                //bookingHistoryList.Add(bookingHistoryItem);
                 bookingHistoryList.Add(bookingHistoryItem);
-
             }
             return bookingHistoryList;
         }

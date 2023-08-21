@@ -12,7 +12,6 @@ namespace VideoClub.App_Start
     public class AdminInitializer
     {
         private UserManager<ApplicationUser> _userManager;
-        //private ApplicationRoleManager _roleManager;
         private readonly UserStore<ApplicationUser> _userStore;
         private readonly RoleManager<IdentityRole> _roleManager;
 

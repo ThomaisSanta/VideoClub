@@ -17,32 +17,27 @@ namespace VideoClub.Areas.MovieRents.Controllers
     public class MovieRentsController : Controller
     {
         private readonly IMovieRentService _movieRentService;
-        private readonly IMovieService _movieService;
         private readonly ICopyService _copyService;
         //private readonly IMapper _mapper;
         private readonly UserStore<ApplicationUser> _userStore;
         private UserManager<ApplicationUser> _userManager;
 
-        public MovieRentsController(IMovieRentService movieRentService, ICopyService copyService, IMovieService movieService)
+        public MovieRentsController(IMovieRentService movieRentService, ICopyService copyService)
             //IMapper mapper)
         {
             _movieRentService = movieRentService;
             _copyService = copyService;
-            _movieService = movieService;
             //_mapper = mapper;
         }
 
         public MovieRentsController(IMovieRentService movieRentService,
-            IMovieService movieService,
-            ApplicationUserManager userManager,
-            ApplicationRoleManager roleManager)
+            ApplicationUserManager userManager)
             //IMapper mapper)
         {
             _userStore = new UserStore<ApplicationUser>(new VideoClubContext());
             _userManager = new UserManager<ApplicationUser>(_userStore);
             UserManager = userManager;
             _movieRentService = movieRentService;
-            _movieService = movieService;
             //_mapper = mapper;
         }
 
@@ -69,68 +64,17 @@ namespace VideoClub.Areas.MovieRents.Controllers
                 var username = UserManager.FindById(movieRentItem.CustomerID).UserName;
                 var activeBookingItem = _movieRentService.GetActiveBooking(movieRentItem);
                 var activeBookingViewModel = new MovieRentViewModel
-                {  //_mapper.Map<MovieRentViewModel>(activeBookingItem);
+                {  
                     Title = _copyService.GetTitleFromCopyID(activeBookingItem.CopyID),
                     CopyID = activeBookingItem.CopyID,
                     UserName = username,
                     ReturnDate = activeBookingItem.ReturnDate,
                     Comment = activeBookingItem.Comment,
                 }; 
-                //var activeBookingItem = _movieRentService.GetActiveBooking(movieRentItem, username);
                 activeBookingList.Add(activeBookingViewModel);
             }
             return View(activeBookingList);
         }
-
-        ////GET 
-        //[HttpGet]
-        //public ActionResult NewBookingFormMovie(string movieTitle)
-        //{
-        //    var booking = new MovieRentInMoviesViewModel
-        //    {
-        //        TitleForm = movieTitle,
-        //    };
-        //    return View(booking);
-        //}
-
-        ////Post
-        //[HttpPost]
-        //public ActionResult NewBookingFormMovie(MovieRentInMoviesViewModel model)
-        //{
-        //    var user = UserManager.FindByName(model.UserNameForm);
-        //    var newBooking = _movieRentService.AddMovieRent(model.MovieFormID,
-        //        user.Id,
-        //        model.CommentForm);
-        //    //return RedirectToAction("MoviesInAdmin", "Movie");
-        //    return RedirectToAction("Index", "Movie");
-        //}
-
-        ////Get
-        //[HttpGet]
-        //public ActionResult NewBookingForm(string userName)
-        //{
-        //    var booking = new MovieRentInUsersViewModel
-        //    {
-        //        UserNameForm = userName,
-        //        Booking = _movieService.GetAvailableMovies().Select(m => new SelectListItem
-        //        {
-        //            Value = m.MovieID.ToString(),
-        //            Text = m.Title
-        //        }).ToList()
-        //    };
-        //    return View(booking);
-        //}
-
-        ////Post
-        //[HttpPost]
-        //public ActionResult NewBookingForm(MovieRentInUsersViewModel model)
-        //{
-        //    var user = UserManager.FindByName(model.UserNameForm);
-        //    var newBooking = _movieRentService.AddMovieRent(model.MovieIDForm,
-        //        user.Id,
-        //        model.CommentForm);
-        //    return RedirectToAction("Customers", "Admin");
-        //}
 
         // GET: Movie/Delete/5
         public ActionResult Delete()

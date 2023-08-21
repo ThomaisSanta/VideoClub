@@ -65,6 +65,10 @@
     <Compile Include="Data\Migrations\202308040905019_Initial.designer.cs">
       <DependentUpon>202308040905019_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Data\Migrations\202308211420081_InitialAppUserName.cs" />
+    <Compile Include="Data\Migrations\202308211420081_InitialAppUserName.designer.cs">
+      <DependentUpon>202308211420081_InitialAppUserName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Data\Migrations\Configuration.cs" />
     <Compile Include="Data\VideoClubContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -88,6 +92,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Data\Migrations\202308040905019_Initial.resx">
       <DependentUpon>202308040905019_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data\Migrations\202308211420081_InitialAppUserName.resx">
+      <DependentUpon>202308211420081_InitialAppUserName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

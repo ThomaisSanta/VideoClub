@@ -1,18 +1,15 @@
-﻿@model VideoClub.Areas.MovieRents.Data.MovieRentInMoviesViewModel
+﻿@model VideoClub.Areas.MovieRents.Data.MovieRentInMoviesBindingModel
 
 @{
-    ViewBag.Title = "NewBookingFormMovie";
+    ViewBag.Title = "MoviesFormView";
 }
 
 @Html.HiddenFor(model => model.MovieFormID)
-@*<h2>Select customer to book @Model.TitleForm</h2>*@
 
 <p>Enter the username of the customer you want to book a copy of this movie</p>
 
-@* "NewBookingFormMovie", "MovieController", FormMethod.Post *@
 @using (Html.BeginForm())
 {
-    @*@Html.HiddenFor(model => model.MovieFormID)*@
     <div class="form-group">
         @Html.LabelFor(model => model.UserNameForm, "Enter username", new { @class = "control-label" })
         @Html.TextBoxFor(model => model.UserNameForm, new { @class = "form-control" })

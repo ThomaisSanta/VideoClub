@@ -19,13 +19,6 @@ namespace VideoClub.Areas.Customers.Controllers
 {
     public class CustomersController : Controller
     {
-        //// GET: Customers/Customers
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
-
-
         private readonly IBookingHistoryService _bookingHistoryService;
         private readonly ICopyService _copyService;
         private readonly IMovieRentService _movieRentService;
@@ -97,24 +90,18 @@ namespace VideoClub.Areas.Customers.Controllers
             }
         }
 
-        // GET: User
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
-
         public ActionResult Index()
         {
             var role = "User";
             var userRole = RoleManager.FindByName(role);
             if (userRole != null)
             {
-                var showUser = UserManager
+                var applicationUserList = UserManager
                     .Users
                     .Where(u => u.Roles
                     .Any(r => r.RoleId == userRole.Id))
                     .ToList();
-                return View(showUser);
+                return View(applicationUserList);
             }
             else
             {
@@ -124,9 +111,9 @@ namespace VideoClub.Areas.Customers.Controllers
 
         //Get
         [HttpGet]
-        public ActionResult NewBookingForm(string userName)
+        public ActionResult CustomersFormView(string userName)
         {
-            var booking = new MovieRentInUsersViewModel
+            var booking = new MovieRentInUsersBindingModel
             {
                 UserNameForm = userName,
                 Booking = _movieService.GetAvailableMovies().Select(m => new SelectListItem
@@ -140,7 +127,7 @@ namespace VideoClub.Areas.Customers.Controllers
 
         //Post
         [HttpPost]
-        public ActionResult NewBookingForm(MovieRentInUsersViewModel model)
+        public ActionResult CustomersFormView(MovieRentInUsersBindingModel model)
         {
             var user = UserManager.FindByName(model.UserNameForm);
             var newBooking = _movieRentService.AddMovieRent(model.MovieIDForm,

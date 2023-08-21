@@ -29,31 +29,5 @@ namespace VideoClub.Common.Services
         {
             return _context.Movies.Where(m => m.CopiesAvailable > 0).ToList();
         }
-
-        //public MovieRent GetBookingFormInUsers(string userName)
-        ////public MovieRentInUsersViewModel GetBookingFormInUsers(string userName)
-        //{
-        //    //var booking = new MovieRentInUsersViewModel
-        //    var booking = new MovieRent
-        //    {
-        //        UserNameForm = userName,
-        //        Booking = GetAvailableMovies().Select(m => new SelectListItem
-        //        {
-        //            Value = m.MovieID.ToString(),
-        //            Text = m.Title
-        //        }).ToList()
-        //    };
-        //    return booking;
-        //}
-
-        //public MovieRent GetBookingFormInMovies(string movieTitle)
-        ////public MovieRentInMoviesViewModel GetBookingFormInMovies(string movieTitle)
-        //{
-        //    var booking = new MovieRentInMoviesViewModel
-        //    {
-        //        TitleForm = movieTitle,
-        //    };
-        //    return booking;
-        //}
     }
 }

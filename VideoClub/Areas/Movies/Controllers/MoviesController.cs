@@ -71,7 +71,6 @@ namespace VideoClub.Areas.Movies.Controllers
         }
 
         // GET : Movie
-        //public ActionResult MoviesInAdmin(PaginationDTO paginationDTO)
         public ActionResult Index(PaginationDTO paginationDTO)
         {
             ViewBag.CurrentSort = paginationDTO.SortOrder;
@@ -84,9 +83,9 @@ namespace VideoClub.Areas.Movies.Controllers
 
         //GET 
         [HttpGet]
-        public ActionResult NewBookingFormMovie(string movieTitle)
+        public ActionResult MoviesFormView(string movieTitle)
         {
-            var booking = new MovieRentInMoviesViewModel
+            var booking = new MovieRentInMoviesBindingModel
             {
                 TitleForm = movieTitle,
             };
@@ -95,7 +94,7 @@ namespace VideoClub.Areas.Movies.Controllers
 
         //Post
         [HttpPost]
-        public ActionResult NewBookingFormMovie(MovieRentInMoviesViewModel model)
+        public ActionResult MoviesFormView(MovieRentInMoviesBindingModel model)
         {
             var user = UserManager.FindByName(model.UserNameForm);
             var newBooking = _movieRentService.AddMovieRent(model.MovieFormID,

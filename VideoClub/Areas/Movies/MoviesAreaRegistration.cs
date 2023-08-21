@@ -17,7 +17,6 @@ namespace VideoClub.Areas.Movies
             context.MapRoute(
                 "Movies_default",
                 "Movies/{controller}/{action}/{id}",
-                //new {controller="Movies", action = "MoviesInAdmin", id = UrlParameter.Optional }
                 new { controller = "Movies", action = "Index", id = UrlParameter.Optional }
             );
         }

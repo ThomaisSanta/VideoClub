@@ -12,18 +12,15 @@ namespace VideoClub.Common.Services
     public class MovieRentService : IMovieRentService
     {
         private readonly VideoClubContext _context;
-        private readonly IMovieService _movieService;
         private readonly ICopyService _copyService;
         private readonly IBookingHistoryService _bookHistoryService;
 
         public MovieRentService(VideoClubContext context,
-            IMovieService movieService,
             ICopyService copyService,
             IBookingHistoryService bookHistoryService)
         {
             _copyService = copyService;
             _context = context;
-            _movieService = movieService;
             _bookHistoryService = bookHistoryService;
         }
         public MovieRent AddMovieRent(int movieID, string userID, string comment)
@@ -68,33 +65,6 @@ namespace VideoClub.Common.Services
                         .FirstOrDefault();
                         
         }
-
-        //public MovieRent GetBookingFormInUsers(string userName)
-        ////public MovieRentInUsersViewModel GetBookingFormInUsers(string userName)
-        //{
-        //    //var booking = new MovieRentInUsersViewModel
-        //    var booking = new MovieRent
-        //    {
-        //        UserNameForm = userName,
-        //        Booking = _movieService.GetAvailableMovies().Select(m => new SelectListItem
-        //        {
-        //            Value = m.MovieID.ToString(),
-        //            Text = m.Title
-        //        }).ToList()
-        //    };
-        //    return booking;
-        //}
-
-        //public MovieRent GetBookingFormInMovies(string movieTitle)
-        ////public MovieRentInMoviesViewModel GetBookingFormInMovies(string movieTitle)
-        //{
-        //    var booking = new MovieRentInMoviesViewModel
-        //    {
-        //        TitleForm = movieTitle,
-        //    };
-        //    return booking;
-        //}
-
         public void DeleteActiveMovieRent(int? copyID)
         {
             var movieRentToDelete = _context.MovieRent
@@ -114,7 +84,6 @@ namespace VideoClub.Common.Services
             _context.MovieRent.Remove(movieRentToDelete);
             _context.SaveChanges();
         }
-
         public IEnumerable<MovieRent> GetMovieRents()
         {
             return _context.MovieRent.ToList();

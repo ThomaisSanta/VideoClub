@@ -67,7 +67,6 @@
     <Compile Include="Interfaces\ICopyService.cs" />
     <Compile Include="Interfaces\IMovieRentService.cs" />
     <Compile Include="Interfaces\IMovieService.cs" />
-    <Compile Include="Interfaces\IPaginationServiceOLD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

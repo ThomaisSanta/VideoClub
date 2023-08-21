@@ -14,9 +14,5 @@ namespace VideoClub.Core.Interfaces
         void DeleteActiveMovieRent(int? copyID);
         IEnumerable<MovieRent> GetMovieRents();
         string GetCommentWithCopieID(int? copyID);
-        //MovieRent GetBookingFormInUsers(string userName);
-        ////MovieRentInUsersViewModel GetBookingFormInUsers(string userName);
-        //MovieRent GetBookingFormInMovies(string movieTitle);
-        ////MovieRentInMoviesViewModel GetBookingFormInMovies(string movieTitle);
     }
 }

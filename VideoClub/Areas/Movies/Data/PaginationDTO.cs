@@ -15,7 +15,6 @@ namespace VideoClub.Areas.Movies.Data
         public string CurrentFilter { get; set; }
         public string SearchString { get; set; }
         public int? Page { get; set; }
-        //public bool Admin { get; set; }
         public string Role { get; set; }
 
         public PaginationDTO(int? current, int? size)

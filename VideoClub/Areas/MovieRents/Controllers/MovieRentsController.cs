@@ -76,19 +76,26 @@ namespace VideoClub.Areas.MovieRents.Controllers
             return View(activeBookingList);
         }
 
-        // GET: Movie/Delete/5
-        public ActionResult Delete()
-        {
-            return View();
-        }
+        //// GET: Movie/Delete/5
+        //public ActionResult Delete()
+        //{
+        //    return View();
+        //}
 
-        // POST: Movie/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int? copyID)
+        //// POST: Movie/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Delete(int? copyID)
+        //{
+        //    _movieRentService.DeleteActiveMovieRent(copyID);
+        //    return RedirectToAction("Index");
+        //}
+
+        [HttpPost]
+        public ActionResult DeleteMovieRent(int? copyID)
         {
             _movieRentService.DeleteActiveMovieRent(copyID);
-            return RedirectToAction("Index");
+            return Json(copyID);
         }
     }
 }

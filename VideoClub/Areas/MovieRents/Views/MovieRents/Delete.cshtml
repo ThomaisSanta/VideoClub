@@ -1,20 +1,49 @@
-﻿@model VideoClub.Areas.MovieRents.Data.MovieRentViewModel
+﻿<!--@model VideoClub.Areas.MovieRents.Data.MovieRentViewModel
 
 @{
     ViewBag.Title = "Delete";
-}
+}-->
 
-<h2>Delete</h2>
+@*<h2>Delete</h2>
 
-<h3>Are you sure you want to delete this booking for a movie?</h3>
-<div>
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
+    <h3>Are you sure you want to delete this booking for a movie?</h3>
+    <div>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
-</div>
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>*@
+
+<!--<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.delete-button').click(function () {
+            var copyID = $(this).data('copyid');
+            $.get('/MovieRents/DeleteConfirmation', { copyID: copyID }, function (data) {
+                $('#delete-confirmation').html(data).dialog({
+                    modal: true,
+                    title: 'Delete Confirmation',
+                    buttons: {
+                        'Delete': function () {
+                            $.post('/MovieRents/Delete', { copyID: copyID }, function () {
+                                // Handle success or perform additional actions
+                            });
+                            $(this).dialog('close');
+                        },
+                        'Cancel': function () {
+                            $(this).dialog('close');
+                        }
+                    },
+                    width: 400,
+                    resizable: false
+                });
+            });
+        });
+    });
+</script>-->

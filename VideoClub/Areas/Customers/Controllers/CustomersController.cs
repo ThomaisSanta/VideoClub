@@ -22,7 +22,7 @@ namespace VideoClub.Areas.Customers.Controllers
         private readonly IBookingHistoryService _bookingHistoryService;
         private readonly ICopyService _copyService;
         private readonly IMovieRentService _movieRentService;
-        //private readonly IMapper _mapper;
+        private readonly IMapper _mapper;
         private readonly IMovieService _movieService;
         private readonly UserStore<ApplicationUser> _userStore;
         private UserManager<ApplicationUser> _userManager;
@@ -35,11 +35,11 @@ namespace VideoClub.Areas.Customers.Controllers
         public CustomersController(IMovieService movieService,
             IBookingHistoryService bookingHistoryService,
             ICopyService copyService,
-            IMovieRentService movieRentService)
-            //IMapper mapper)
+            IMovieRentService movieRentService,
+            IMapper mapper)
         {
             _bookingHistoryService = bookingHistoryService;
-            //_mapper = mapper;
+            _mapper = mapper;
             _copyService = copyService;
             _movieService = movieService;
             _movieRentService = movieRentService;
@@ -49,7 +49,7 @@ namespace VideoClub.Areas.Customers.Controllers
             IBookingHistoryService bookingHistoryService,
             IMovieRentService movieRentService,
             ICopyService copyService,
-            //IMapper mapper,
+            IMapper mapper,
             ApplicationUserManager userManager,
             ApplicationRoleManager roleManager)
         {
@@ -60,7 +60,7 @@ namespace VideoClub.Areas.Customers.Controllers
             _bookingHistoryService = bookingHistoryService;
             _movieRentService = movieRentService;
             _copyService = copyService;
-            //_mapper = mapper;
+            _mapper = mapper;
             _roleManager = roleManager;
         }
 
@@ -109,7 +109,7 @@ namespace VideoClub.Areas.Customers.Controllers
             }
         }
 
-        //Get
+        //Get view model and post binding model
         [HttpGet]
         public ActionResult CustomersFormView(string userName)
         {
@@ -127,10 +127,11 @@ namespace VideoClub.Areas.Customers.Controllers
 
         //Post
         [HttpPost]
-        public ActionResult CustomersFormView(MovieRentInUsersBindingModel model)
+        public ActionResult CustomersFormView(MovieRentInUsersBindingModel model) //change names to be equal
         {
+            //var map = _mapper.Map<MovieRent>(model);
             var user = UserManager.FindByName(model.UserNameForm);
-            var newBooking = _movieRentService.AddMovieRent(model.MovieIDForm,
+            var newBooking = _movieRentService.AddMovieRent(model.MovieIDForm, //arg Movierent
                 user.Id,
                 model.CommentForm);
             return RedirectToAction("Index", "Customers");

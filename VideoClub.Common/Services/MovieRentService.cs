@@ -70,19 +70,33 @@ namespace VideoClub.Common.Services
             var movieRentToDelete = _context.MovieRent
                 .Where(r => r.CopyID == copyID)
                 .FirstOrDefault();
-            var copy = _context.Copy
-                .Where(c => c.CopyID == copyID)
-                .FirstOrDefault();
-            copy.CopyIsBooked = false;
-            var movieID = _context.Copy
-                .Where(c => c.CopyID == copyID)
-                .Select(m => m.MovieID)
-                .FirstOrDefault();
-            var movie = _context.Movies
-                .FirstOrDefault(m => m.MovieID == movieID);
-            movie.CopiesAvailable += 1;
-            _context.MovieRent.Remove(movieRentToDelete);
-            _context.SaveChanges();
+            if (movieRentToDelete != null)
+            {
+                var movieID = movieRentToDelete.Copy.MovieID; // Retrieve MovieID from Copy navigation property
+                var copy = movieRentToDelete.Copy;
+                copy.CopyIsBooked = false;
+                var movie = _context.Movies
+                    .FirstOrDefault(m => m.MovieID == movieID);
+                if (movie != null)
+                {
+                    movie.CopiesAvailable += 1;
+                }
+                _context.MovieRent.Remove(movieRentToDelete);
+                _context.SaveChanges();
+            }
+            //var copy = _context.Copy
+            //    .Where(c => c.CopyID == copyID)
+            //    .FirstOrDefault();
+            //copy.CopyIsBooked = false;
+            //var movieID = _context.Copy
+            //    .Where(c => c.CopyID == copyID)
+            //    .Select(m => m.MovieID)
+            //    .FirstOrDefault();
+            //var movie = _context.Movies
+            //    .FirstOrDefault(m => m.MovieID == movieID);
+            //movie.CopiesAvailable += 1;
+            //_context.MovieRent.Remove(movieRentToDelete);
+            //_context.SaveChanges();
         }
         public IEnumerable<MovieRent> GetMovieRents()
         {

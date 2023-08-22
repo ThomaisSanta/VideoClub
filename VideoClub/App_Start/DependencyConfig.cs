@@ -22,8 +22,8 @@ namespace VideoClub.App_Start
         {
             var builder = new ContainerBuilder();
             //IMapper
-            //builder.Register(c => MapperInit.Init()).AsSelf().SingleInstance();
-            //builder.Register(c => c.Resolve<MapperConfiguration>().CreateMapper(c.Resolve)).As<IMapper>().InstancePerLifetimeScope();
+            builder.Register(c => MapperInit.Init()).AsSelf().SingleInstance();
+            builder.Register(c => c.Resolve<MapperConfiguration>().CreateMapper(c.Resolve)).As<IMapper>().InstancePerLifetimeScope();
 
             //DbContext
             builder.RegisterType<VideoClubContext>().As<VideoClubContext>().InstancePerRequest();

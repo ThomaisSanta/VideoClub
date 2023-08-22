@@ -287,6 +287,8 @@
     <Content Include="Areas\Customers\Views\Customers\CustomersFormView.cshtml" />
     <Content Include="Areas\Customers\Views\Customers\BookingHistory.cshtml" />
     <Content Include="Areas\MovieRents\Views\MovieRents\Delete.cshtml" />
+    <Content Include="Areas\Customers\Views\Customers\_CustomerBookingForm.cshtml" />
+    <Content Include="Areas\MovieRents\Views\MovieRents\_DeleteConfirmation.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

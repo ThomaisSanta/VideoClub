@@ -15,7 +15,6 @@ namespace VideoClub.Areas.Admin.Controllers
 {
     public class AdminController : Controller
     {
-        private readonly IMovieService _movieService;
         private readonly UserStore<ApplicationUser> _userStore;
         private UserManager<ApplicationUser> _userManager;
         private ApplicationRoleManager _roleManager;
@@ -24,20 +23,13 @@ namespace VideoClub.Areas.Admin.Controllers
         {
         }
 
-        public AdminController(IMovieService movieService)
-        {
-            _movieService = movieService;
-        }
-
         public AdminController(IMovieService movieService,
-            ICopyService copyService,
             ApplicationUserManager userManager,
             ApplicationRoleManager roleManager)
         {
             _userStore = new UserStore<ApplicationUser>(new VideoClubContext());
             _userManager = new UserManager<ApplicationUser>(_userStore);
             UserManager = userManager;
-            _movieService = movieService;
             _roleManager = roleManager;
         }
 

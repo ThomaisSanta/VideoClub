@@ -11,6 +11,7 @@ using VideoClub.Core.Interfaces;
 using VideoClub.Infrastructure.Data;
 using VideoClub.Areas.MovieRents.Data;
 using AutoMapper;
+using System.Diagnostics;
 
 namespace VideoClub.Areas.MovieRents.Controllers
 {
@@ -18,27 +19,22 @@ namespace VideoClub.Areas.MovieRents.Controllers
     {
         private readonly IMovieRentService _movieRentService;
         private readonly ICopyService _copyService;
-        //private readonly IMapper _mapper;
         private readonly UserStore<ApplicationUser> _userStore;
         private UserManager<ApplicationUser> _userManager;
 
         public MovieRentsController(IMovieRentService movieRentService, ICopyService copyService)
-            //IMapper mapper)
         {
             _movieRentService = movieRentService;
             _copyService = copyService;
-            //_mapper = mapper;
         }
 
         public MovieRentsController(IMovieRentService movieRentService,
             ApplicationUserManager userManager)
-            //IMapper mapper)
         {
             _userStore = new UserStore<ApplicationUser>(new VideoClubContext());
             _userManager = new UserManager<ApplicationUser>(_userStore);
             UserManager = userManager;
             _movieRentService = movieRentService;
-            //_mapper = mapper;
         }
 
         public ApplicationUserManager UserManager
@@ -76,26 +72,19 @@ namespace VideoClub.Areas.MovieRents.Controllers
             return View(activeBookingList);
         }
 
-        //// GET: Movie/Delete/5
-        //public ActionResult Delete()
-        //{
-        //    return View();
-        //}
-
-        //// POST: Movie/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Delete(int? copyID)
-        //{
-        //    _movieRentService.DeleteActiveMovieRent(copyID);
-        //    return RedirectToAction("Index");
-        //}
-
         [HttpPost]
-        public ActionResult DeleteMovieRent(int? copyID)
+        public ActionResult DeleteMovieRent(MovieRentDTO movieRentDTO)
         {
-            _movieRentService.DeleteActiveMovieRent(copyID);
-            return Json(copyID);
+            try
+            {
+                _movieRentService.DeleteActiveMovieRent(movieRentDTO.CopyID);
+                return Json(movieRentDTO.CopyID);
+            }
+            catch (Exception ex)
+            {
+                Trace.TraceError("An error occurred while deleting movie rent: {0}", ex.Message);
+                return Json(new { success = false });
+            }
         }
     }
 }

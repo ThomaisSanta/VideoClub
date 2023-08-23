@@ -51,7 +51,7 @@
                 @Html.DisplayFor(modelItem => item.CopiesAvailable)
             </td>
             <td>
-                <p><a href="@Url.Action("MoviesFormView", "Movies", new { SortOrder = ViewBag.GenreSortParm, CurrentFilter = ViewBag.CurrentFilter, MovieFormID = item.MovieID })" class="btn btn-primary btn-md">New Booking &raquo;</a></p>
+                <p><a href="@Url.Action("MoviesFormView", "Movies", new { SortOrder = ViewBag.GenreSortParm, CurrentFilter = ViewBag.CurrentFilter, MovieFormID = item.MovieID })" class="btn btn-primary btn-md">New Booking</a></p>
             </td>
         </tr>
     }

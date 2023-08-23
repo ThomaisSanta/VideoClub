@@ -245,6 +245,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Areas\MovieRents\Data\MovieRentDTO.cs" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -286,8 +287,6 @@
     <Content Include="Areas\Movies\Views\Movies\MoviesFormView.cshtml" />
     <Content Include="Areas\Customers\Views\Customers\CustomersFormView.cshtml" />
     <Content Include="Areas\Customers\Views\Customers\BookingHistory.cshtml" />
-    <Content Include="Areas\MovieRents\Views\MovieRents\Delete.cshtml" />
-    <Content Include="Areas\Customers\Views\Customers\_CustomerBookingForm.cshtml" />
     <Content Include="Areas\MovieRents\Views\MovieRents\_DeleteConfirmation.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

@@ -8,6 +8,48 @@ The basic idea is that we have roles: users and admin. Admins have additional fu
 
 Users, on the other hand, have limited functionalities. They can only see how many available copies exist for each movie.
 
+Screenshots:<br>
+
+**Register page**
+![RegisterUser](screenshots/RegisterUser.png)
+
+**Login page**
+![LoginUser](screenshots/LoginUser.png)
+
+**For Admin functionality:**
+
+<br>
+
+
+**Admin home page**
+![AdminPage](screenshots/AdminPage.png)
+
+**Admin movies page**
+![AdminMovies](screenshots/AdminMovies.png)
+
+**Admin customers page**
+![AdminCustomers](screenshots/AdminCustomers.png)
+
+**Admin creating new booking for a client**
+![AdminNewBooking](screenshots/AdminNewBooking.png)
+
+**Admin watching booking history of a client**
+![AdminBookingHistory](screenshots/AdminBookingHistory.png)
+
+**Admin active bookings page**
+![AdminActiveBookings](screenshots/AdminActiveBookings.png)
+
+**Admin delete active booking**
+![AdminActiveBookingsDelete](screenshots/AdminActiveBookingsDelete.png)
+
+
+
+
+**For User functionality:**
+
+**User home page**
+![UserMovies](screenshots/UserMovies.png)
+
 ### Authentication
 
 User authentication and registration are handled using **[Identity Framework](https://docs.microsoft.com/en-us/aspnet/identity/)**. This provides secure login and registration functionalities for users and admins.

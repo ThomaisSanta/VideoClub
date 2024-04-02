@@ -71,6 +71,11 @@
     </Compile>
     <Compile Include="Data\Migrations\Configuration.cs" />
     <Compile Include="Data\VideoClubContext.cs" />
+    <Compile Include="Migrations\202404021054210_Initial.cs" />
+    <Compile Include="Migrations\202404021054210_Initial.designer.cs">
+      <DependentUpon>202404021054210_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Implementations\LoggingService.cs" />
     <Compile Include="Services\Interfaces\ILoggingService.cs" />
@@ -95,6 +100,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Data\Migrations\202308211420081_InitialAppUserName.resx">
       <DependentUpon>202308211420081_InitialAppUserName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202404021054210_Initial.resx">
+      <DependentUpon>202404021054210_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
